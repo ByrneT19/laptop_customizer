@@ -1,0 +1,56 @@
+import React, { Component } from 'react';
+import slugify from 'slugify';
+
+const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+});
+
+class Features extends Component {
+
+    // constructor(props) {
+    //     super(props);
+
+    // }
+
+    render() {
+
+        const features = Object.keys(this.props.features).map((feature, idx) => {
+            const featureHash = feature + '-' + idx;
+            const options = this.props.features[feature].map(item => {
+                const itemHash = slugify(JSON.stringify(item));
+                return (
+                    <div key={itemHash} className="feature__item">
+                        <input
+                            key={this.props.item}
+                            type="radio"
+                            id={this.props.itemHash}
+                            className="feature__option"
+                            name={slugify(feature)}
+                            checked={item.name === this.props.selected[feature].name}
+                            onChange={e => this.props.updateFeature(feature, item.name)}
+                        />
+                        <label htmlFor={itemHash} className="feature__label">
+                            {item.name} ({USCurrencyFormat.format(item.cost)})
+                        </label>
+                    </div>
+                )
+            })
+
+            return (
+                <>
+                    <fieldset className="feature" key={featureHash}>
+                        <legend className="feature__name">
+                            <h3>{feature}</h3>
+                        </legend>
+                        {options}
+                    </fieldset>
+                </>
+            )
+        })
+        return features 
+    }
+
+}
+
+export default Features;
