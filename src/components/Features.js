@@ -8,11 +8,6 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class Features extends Component {
 
-    // constructor(props) {
-    //     super(props);
-
-    // }
-
     render() {
 
         const features = Object.keys(this.props.features).map((feature, idx) => {
@@ -38,17 +33,15 @@ class Features extends Component {
             })
 
             return (
-                <>
-                    <fieldset className="feature" key={featureHash}>
-                        <legend className="feature__name">
-                            <h3>{feature}</h3>
-                        </legend>
-                        {options}
-                    </fieldset>
-                </>
+                <fieldset className="feature" key={featureHash}>
+                    <legend className="feature__name">
+                        <h3>{feature}</h3>
+                    </legend>
+                    {options}
+                </fieldset>
             )
         })
-        return features 
+        return features
     }
 
 }

@@ -107,7 +107,7 @@ class App extends Component {
               features={this.props.features}
               selected={this.state.selected}
               updateFeature={this.updateFeature}
-              // key={this.props.features}
+              key={this.props.features}
             />
           </form>
           <section className="main__summary">
