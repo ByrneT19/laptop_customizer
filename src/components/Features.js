@@ -17,13 +17,13 @@ class Features extends Component {
                 return (
                     <div key={itemHash} className="feature__item">
                         <input
-                            key={this.props.item}
+                            // key={item}
                             type="radio"
-                            id={this.props.itemHash}
+                            id={itemHash}
                             className="feature__option"
                             name={slugify(feature)}
                             checked={item.name === this.props.selected[feature].name}
-                            onChange={e => this.props.updateFeature(feature, item.name)}
+                            onChange={() => this.props.updateFeature(feature, item.name)}
                         />
                         <label htmlFor={itemHash} className="feature__label">
                             {item.name} ({USCurrencyFormat.format(item.cost)})
