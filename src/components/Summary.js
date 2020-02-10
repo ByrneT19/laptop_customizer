@@ -6,11 +6,12 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 });
 
 class Summary extends Component {
+
     render() {
 
-        const summary = Object.keys(this.state.selected).map((feature, idx) => {
+        const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
-            const selectedOption = this.state.selected[feature];
+            const selectedOption = this.props.selected[feature];
 
             return (
                 <div className="summary__option" key={featureHash}>
@@ -23,10 +24,21 @@ class Summary extends Component {
             );
         });
 
-        const total = Object.keys(this.state.selected).reduce(
-            (acc, curr) => acc + this.state.selected[curr].cost,
+        const total = Object.keys(this.props.selected).reduce(
+            (acc, curr) => acc + this.props.selected[curr].cost,
             0
         );
+        return (
+            <div>
+                {summary}
+                <div className="summary__total">
+                    <div className="summary__total__label">Total</div>
+                    <div className="summary__total__value">
+                        {USCurrencyFormat.format(total)}
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 
