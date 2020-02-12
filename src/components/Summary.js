@@ -12,6 +12,7 @@ class Summary extends Component {
         const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.selected[feature];
+            console.log('selectedOption', selectedOption)
 
             return (
                 <div className="summary__option" key={featureHash}>

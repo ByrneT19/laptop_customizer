@@ -40,7 +40,7 @@ class App extends Component {
       selected
     });
   };
-
+  
   render() {
 
     return (
@@ -58,8 +58,6 @@ class App extends Component {
           <section className="main__summary">
             <h2>Your cart</h2>
             <Summary 
-              // summary={this.props.features}
-              // total={this.props.total}
               selected={this.state.selected}
             />
           </section>
