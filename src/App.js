@@ -59,6 +59,7 @@ class App extends Component {
             <h2>Your cart</h2>
             <Summary 
               selected={this.state.selected}
+              updateFeature={this.updateFeature}
             />
           </section>
         </main>
