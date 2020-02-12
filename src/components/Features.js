@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Items from './Items';
 import slugify from 'slugify';
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
@@ -21,8 +22,8 @@ class Features extends Component {
                             id={itemHash}
                             className="feature__option"
                             name={slugify(feature)}
-                            checked={item.name === this.props.selected[feature]}
-                            onChange={() => this.props.updateFeature(this.props.feature, item)} />
+                            checked={item.name === this.props.selected[feature].name}
+                            onChange={() => this.props.updateFeature(feature, item)} />
                         <label htmlFor={itemHash} className="feature__label">
                             {item.name} ({USCurrencyFormat.format(item.cost)})
                         </label>
@@ -31,12 +32,16 @@ class Features extends Component {
             })
 
             return (
-                <fieldset className="feature" key={featureHash}>
-                    <legend className="feature__name">
-                        <h3>{feature}</h3>
-                    </legend>
+                <div key={featureHash}>
+                    {features}
+                    {featureHash}
                     {options}
-                </fieldset>
+                    <Items
+                        features={this.props.features}
+                        featureHash={this.props.featureHash}
+                        options={this.props.options}
+                    />
+                </div>
             )
         })
         return features
@@ -45,3 +50,4 @@ class Features extends Component {
 }
 
 export default Features;
+

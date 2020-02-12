@@ -4,13 +4,6 @@ import Features from './components/Features';
 import Summary from './components/Summary';
 import './App.css';
 
-// This object will allow us to
-// easily convert numbers into US dollar values
-// const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-//   style: 'currency',
-//   currency: 'USD'
-// });
-
 class App extends Component {
   state = {
     selected: {
@@ -59,7 +52,6 @@ class App extends Component {
             <h2>Your cart</h2>
             <Summary 
               selected={this.state.selected}
-              updateFeature={this.updateFeature}
             />
           </section>
         </main>
